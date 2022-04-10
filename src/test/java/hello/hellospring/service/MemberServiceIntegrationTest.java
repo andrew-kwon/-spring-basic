@@ -1,6 +1,6 @@
 package hello.hellospring.service;
 
-import hello.hellospring.domein.Member;
+import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
+// 테스트를 실행할때 transaction 실행하고 테스트 끝나면 롤백해줌, Service는 롤백안함
 @Transactional
 class MemberServiceIntegrationTest {
 
@@ -31,6 +32,7 @@ class MemberServiceIntegrationTest {
     //Then
         Member findMember = memberRepository.findById(saveId).get();
         assertEquals(member.getName(), findMember.getName());
+
     }
 
     @Test

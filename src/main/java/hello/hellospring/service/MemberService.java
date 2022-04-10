@@ -1,6 +1,6 @@
 package hello.hellospring.service;
 
-import hello.hellospring.domein.Member;
+import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,8 @@ import java.util.Optional;
 // 서비스는 회원 리포지토리와 도메인을 활용하여 실제 비즈니스 로직을 작성하는 곳임
 // @Service 어노테이션을 붙여야 스프링 컨테이너에 등록을 함
 @Service
+
+// jpa를 쓰려면 항상 transactional이 있어야한다. 데이터 저장/변경할때
 @Transactional
 public class MemberService {
 
@@ -40,11 +42,7 @@ public class MemberService {
         // optional로 감쌌기 때문에 .ifPresent가 가능해진 것임
         memberRepository.findByName(member.getName())
              .ifPresent(m -> {
-             try {
-                 throw new IllegalStateException("이미 존재하는 회원입니다");
-             } catch (IllegalStateException e) {
-                 e.printStackTrace();
-             }
+                 throw new IllegalStateException("이미 존재하는 회원입니다.");
          });
     }
 

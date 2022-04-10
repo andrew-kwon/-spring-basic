@@ -1,6 +1,6 @@
 package hello.hellospring.service;
 
-import hello.hellospring.domein.Member;
+import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,7 +46,7 @@ class MemberServiceTest {
         member1.setName("spring");
 
         Member member2 = new Member();
-        member2.setName("spring2");
+        member2.setName("spring");
 
         // when
         memberService.join(member1);
@@ -55,6 +55,6 @@ class MemberServiceTest {
                 () -> memberService.join(member2));
 
         // then
-        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다");
+        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
     }
 }

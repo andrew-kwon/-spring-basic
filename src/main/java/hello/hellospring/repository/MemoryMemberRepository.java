@@ -1,5 +1,5 @@
 package hello.hellospring.repository;
-import hello.hellospring.domein.Member;
+import hello.hellospring.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 // @Repository 어노테이션이 붙어있어야 스프링이 실행될 때 가져옴
-@Repository
+// @Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     // key는 회원의 아이디라서 Long, 값은 Member
